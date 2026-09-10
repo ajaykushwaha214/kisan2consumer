@@ -27,5 +27,5 @@ npm run dev
 \`\`\`
 
 ## Team
-Frontend: [Tumhara naam]
-Backend: [Teammates ke naam]
+Frontend: [Ajay Kushwaha]
+Backend: [Shivam yadav, Suyash gupta]

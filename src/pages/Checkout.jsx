@@ -28,9 +28,12 @@ function OrderPlaced() {
         <p className="text-emerald-600/60 text-sm mb-7">
           Your order has been sent to the farmers. You'll be notified once it's confirmed.
         </p>
-        <Link to="/consumer" className="block w-full bg-gradient-to-r from-emerald-600 to-lime-500 text-white font-bold py-3.5 rounded-xl hover:opacity-90 transition-opacity">
-          Continue Shopping
-        </Link>
+        <Link to="/track" className="block w-full bg-emerald-100 text-emerald-800 font-bold py-3.5 rounded-xl hover:bg-emerald-200 transition-colors mb-3">
+              Track Order
+               </Link>
+              <Link to="/consumer" className="block w-full bg-gradient-to-r from-emerald-600 to-lime-500 text-white font-bold py-3.5 rounded-xl hover:opacity-90 transition-opacity">
+                   Continue Shopping
+             </Link>
       </div>
     </div>
   );

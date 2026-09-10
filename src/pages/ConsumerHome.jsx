@@ -77,6 +77,10 @@ function SearchAndFilters({ search, setSearch, category, setCategory }) {
             </button>
           ))}
         </div>
+
+        <Link to="/map" className="inline-block text-white/90 text-xs font-semibold mt-3 underline underline-offset-2">
+          📍 View nearby farmers on map
+        </Link>
       </div>
     </div>
   );
