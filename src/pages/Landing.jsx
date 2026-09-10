@@ -1,30 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Sprout, Users, TrendingUp, ShieldCheck, MapPin, Star, Menu, X,
   ArrowRight, ShoppingBasket, Handshake, BarChart3, Leaf
 } from "lucide-react";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const links = ["How it Works", "For Farmers", "For Consumers", "Impact"];
   return (
     <nav className="sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-emerald-100">
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
-        <div className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-lime-500 flex items-center justify-center">
             <Sprout className="w-5 h-5 text-white" />
           </div>
           <span className="font-extrabold text-emerald-900 text-lg tracking-tight">Kisan2Consumer</span>
-        </div>
+        </Link>
         <div className="hidden md:flex items-center gap-7 text-sm font-semibold text-emerald-800/60">
           {links.map((l) => (
             <a key={l} href={`#${l.toLowerCase().replace(/\s/g, "-")}`} className="hover:text-emerald-700 transition-colors">{l}</a>
           ))}
         </div>
         <div className="hidden md:flex items-center gap-3">
-          <Link className="text-emerald-800 font-semibold text-sm px-4 py-2.5">Sign In</Link>
-          <button className="bg-gradient-to-r from-emerald-600 to-lime-500 text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg shadow-emerald-200 hover:shadow-emerald-300 transition-shadow">
+          <button type="button" onClick={() => navigate("/login")} className="text-emerald-800 font-semibold text-sm px-4 py-2.5">Sign In</button>
+          <button type="button" onClick={() => navigate("/login")} className="bg-gradient-to-r from-emerald-600 to-lime-500 text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-lg shadow-emerald-200 hover:shadow-emerald-300 transition-shadow">
             Get Started
           </button>
         </div>
@@ -35,7 +36,7 @@ function Navbar() {
       {open && (
         <div className="md:hidden border-t border-emerald-100 px-5 py-4 flex flex-col gap-4 text-emerald-800 font-semibold">
           {links.map((l) => <a key={l} href={`#${l.toLowerCase().replace(/\s/g, "-")}`}>{l}</a>)}
-          <button className="bg-gradient-to-r from-emerald-600 to-lime-500 text-white text-sm font-bold px-5 py-2.5 rounded-full mt-1">
+          <button type="button" onClick={() => navigate("/login")} className="bg-gradient-to-r from-emerald-600 to-lime-500 text-white text-sm font-bold px-5 py-2.5 rounded-full mt-1">
             Get Started
           </button>
         </div>
@@ -45,6 +46,7 @@ function Navbar() {
 }
 
 function Hero() {
+  const navigate = useNavigate();
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-emerald-800 via-emerald-700 to-lime-600">
       <div className="absolute -top-24 -right-24 w-96 h-96 bg-lime-400/25 rounded-full blur-3xl" />
@@ -65,12 +67,12 @@ function Hero() {
             middlemen, fairer prices, and fresher produce for everyone.
           </p>
           <div className="flex flex-wrap items-center gap-3 mt-8">
-           <Link to="/farmer" className="bg-amber-400 text-emerald-900 font-bold px-6 py-3.5 rounded-full flex items-center gap-2 hover:bg-amber-300 transition-colors shadow-lg shadow-amber-400/30">
-               Sell as a Farmer <ArrowRight className="w-4 h-4" />
-                </Link>
-               <Link to="/consumer" className="bg-white/10 backdrop-blur-sm text-white font-bold px-6 py-3.5 rounded-full border border-white/25 hover:bg-white/20 transition-colors">
-                  Shop as a Consumer
-                 </Link>
+            <button type="button" onClick={() => navigate("/farmer")} className="bg-amber-400 text-emerald-900 font-bold px-6 py-3.5 rounded-full flex items-center gap-2 hover:bg-amber-300 transition-colors shadow-lg shadow-amber-400/30">
+              Sell as a Farmer <ArrowRight className="w-4 h-4" />
+            </button>
+            <button type="button" onClick={() => navigate("/consumer")} className="bg-white/10 backdrop-blur-sm text-white font-bold px-6 py-3.5 rounded-full border border-white/25 hover:bg-white/20 transition-colors">
+              Shop as a Consumer
+            </button>
           </div>
         </div>
 
@@ -222,18 +224,19 @@ function Impact() {
 }
 
 function CTA() {
+  const navigate = useNavigate();
   return (
     <section className="bg-gradient-to-br from-emerald-800 to-lime-600">
       <div className="max-w-4xl mx-auto px-5 py-16 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold text-white">Join the direct marketplace</h2>
         <p className="text-emerald-100 mt-3">Whether you grow it or buy it — start today.</p>
         <div className="flex flex-wrap justify-center gap-3 mt-7">
-          <Link to="/farmer" className="bg-amber-400 text-emerald-900 font-bold px-6 py-3.5 rounded-full flex items-center gap-2 hover:bg-amber-300 transition-colors shadow-lg shadow-amber-400/30">
-               Sell as a Farmer <ArrowRight className="w-4 h-4" />
-                </Link>
-           <Link to="/consumer" className="bg-white/10 backdrop-blur-sm text-white font-bold px-6 py-3.5 rounded-full border border-white/25 hover:bg-white/20 transition-colors">
-               Shop as a Consumer
-                </Link>
+          <button type="button" onClick={() => navigate("/farmer")} className="bg-amber-400 text-emerald-900 font-bold px-8 py-4 rounded-full hover:bg-amber-300 transition-colors shadow-lg shadow-amber-400/30">
+            Sell as a Farmer
+          </button>
+          <button type="button" onClick={() => navigate("/consumer")} className="bg-white/10 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-full border border-white/25 hover:bg-white/20 transition-colors">
+            Shop as a Consumer
+          </button>
         </div>
       </div>
     </section>

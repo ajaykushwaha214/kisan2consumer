@@ -17,6 +17,7 @@ const PRODUCTS = [
 const CATEGORIES = ["All", "Vegetables", "Fruits", "Grains", "Pulses", "Dairy", "Spices"];
 
 function Header({ cartCount, onCartClick }) {
+  const navigate = useNavigate();
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-emerald-100">
       <div className="max-w-6xl mx-auto px-5 flex items-center justify-between h-16">
@@ -39,9 +40,9 @@ function Header({ cartCount, onCartClick }) {
               </span>
             )}
           </button>
-          <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+          <button type="button" onClick={() => navigate("/login")} className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
             <User className="w-4.5 h-4.5 text-emerald-700" />
-          </div>
+          </button>
         </div>
       </div>
     </header>
