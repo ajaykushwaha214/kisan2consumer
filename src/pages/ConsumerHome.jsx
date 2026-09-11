@@ -6,15 +6,41 @@ import {
 } from "lucide-react";
 
 const PRODUCTS = [
-  { id: 1, name: "Tomatoes", category: "Vegetables", farmer: "Raj Kumar", location: "Gorakhpur", distance: 2.4, price: 30, unit: "kg", rating: 4.6 },
-  { id: 2, name: "Basmati Rice", category: "Grains", farmer: "Meena Devi", location: "Bareilly", distance: 5.1, price: 65, unit: "kg", rating: 4.8 },
-  { id: 3, name: "Organic Wheat", category: "Grains", farmer: "Suresh Yadav", location: "Kanpur", distance: 3.8, price: 28, unit: "kg", rating: 4.5 },
-  { id: 4, name: "Green Chillies", category: "Vegetables", farmer: "Anita Sharma", location: "Lucknow", distance: 1.9, price: 40, unit: "kg", rating: 4.3 },
-  { id: 5, name: "Alphonso Mangoes", category: "Fruits", farmer: "Ramesh Patil", location: "Ratnagiri", distance: 8.2, price: 120, unit: "dozen", rating: 4.9 },
-  { id: 6, name: "Toor Dal", category: "Pulses", farmer: "Vikram Singh", location: "Kanpur", distance: 4.0, price: 110, unit: "kg", rating: 4.4 },
+  { id: 1, name: "Tomatoes", category: "Vegetables", farmer: "Raj Kumar", location: "Gorakhpur", distance: 2.4, price: 30, unit: "kg", rating: 4.6, image: "https://commons.wikimedia.org/wiki/Special:FilePath/Tomato%20je.jpg?width=400" },
+  { id: 2, name: "Basmati Rice", category: "Grains", farmer: "Meena Devi", location: "Bareilly", distance: 5.1, price: 65, unit: "kg", rating: 4.8, image: "https://commons.wikimedia.org/wiki/Special:FilePath/Basmati%20Rice.jpg?width=400" },
+  { id: 3, name: "Organic Wheat", category: "Grains", farmer: "Suresh Yadav", location: "Kanpur", distance: 3.8, price: 28, unit: "kg", rating: 4.5, image: "https://commons.wikimedia.org/wiki/Special:FilePath/Wheat%20grain.jpg?width=400" },
+  { id: 4, name: "Green Chillies", category: "Vegetables", farmer: "Anita Sharma", location: "Lucknow", distance: 1.9, price: 40, unit: "kg", rating: 4.3, image: "https://commons.wikimedia.org/wiki/Special:FilePath/Green%20chillies.jpg?width=400" },
+  { id: 5, name: "Alphonso Mangoes", category: "Fruits", farmer: "Ramesh Patil", location: "Ratnagiri", distance: 8.2, price: 120, unit: "dozen", rating: 4.9, image: "https://commons.wikimedia.org/wiki/Special:FilePath/Mango%20fruits.JPG?width=400" },
+  { id: 6, name: "Toor Dal", category: "Pulses", farmer: "Vikram Singh", location: "Kanpur", distance: 4.0, price: 110, unit: "kg", rating: 4.4, image: "https://commons.wikimedia.org/wiki/Special:FilePath/Pigeon%20Pea%20(Toor%20Dal)%20(49683602388).jpg?width=400" },
 ];
 
 const CATEGORIES = ["All", "Vegetables", "Fruits", "Grains", "Pulses", "Dairy", "Spices"];
+
+/*
+  ProductImage: shows the real photo, but if it ever fails to load
+  (slow network, bad link, offline during demo), it silently falls
+  back to the green icon tile instead of a broken-image box — safer
+  for a live presentation.
+*/
+function ProductImage({ src, alt, className }) {
+  const [failed, setFailed] = useState(false);
+  if (failed) {
+    return (
+      <div className={`${className} bg-gradient-to-br from-emerald-100 to-lime-100 flex items-center justify-center`}>
+        <Sprout className="w-8 h-8 text-emerald-400" />
+      </div>
+    );
+  }
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={`${className} object-cover`}
+      onError={() => setFailed(true)}
+      loading="lazy"
+    />
+  );
+}
 
 function Header({ cartCount, onCartClick }) {
   const navigate = useNavigate();
@@ -90,8 +116,8 @@ function SearchAndFilters({ search, setSearch, category, setCategory }) {
 function ProductCard({ product, onAdd }) {
   return (
     <div className="bg-white rounded-2xl border border-emerald-100 overflow-hidden hover:shadow-lg transition-shadow">
-      <div className="h-36 bg-gradient-to-br from-emerald-100 to-lime-100 flex items-center justify-center">
-        <Sprout className="w-10 h-10 text-emerald-400" />
+      <div className="h-36 overflow-hidden">
+        <ProductImage src={product.image} alt={product.name} className="w-full h-full" />
       </div>
       <div className="p-4">
         <div className="flex items-start justify-between">
@@ -138,8 +164,8 @@ function CartDrawer({ cart, onClose, onUpdateQty, onCheckout }) {
           )}
           {cart.map((item) => (
             <div key={item.id} className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-100 to-lime-100 flex items-center justify-center shrink-0">
-                <Sprout className="w-6 h-6 text-emerald-400" />
+              <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
+                <ProductImage src={item.image} alt={item.name} className="w-full h-full" />
               </div>
               <div className="flex-1">
                 <p className="font-bold text-emerald-950 text-sm">{item.name}</p>
