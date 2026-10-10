@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Sprout, Users, TrendingUp, ShieldCheck, MapPin, Star, Menu, X,
@@ -56,7 +56,7 @@ function Hero() {
       <div className="relative max-w-6xl mx-auto px-5 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
         <div className="text-white">
           <span className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-xs font-bold px-4 py-2 rounded-full mb-6">
-            <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" /> SIH 2026 · SIH26033
+            <Star className="w-3.5 h-3.5 text-amber-300 fill-amber-300" /> Direct Farmer-to-Consumer Marketplace
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">
             From farm gate to
@@ -144,7 +144,7 @@ function HowItWorks() {
           <h2 className="text-3xl md:text-4xl font-extrabold text-emerald-950 mt-2">A shorter path from farm to table</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((s, i) => (
+          {steps.map((s) => (
             <div key={s.title} className="bg-white rounded-2xl p-7 border border-emerald-100">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-lime-500 flex items-center justify-center mb-5">
                 <s.icon className="w-6 h-6 text-white" />
@@ -253,7 +253,7 @@ function Footer() {
           </div>
           <span className="font-extrabold text-white text-sm">Kisan2Consumer</span>
         </div>
-        <p className="text-xs">Built for SIH 2026 · SIH26033</p>
+        <p className="text-xs">A Direct Farmer-to-Consumer Agricultural Marketplace</p>
       </div>
     </footer>
   );

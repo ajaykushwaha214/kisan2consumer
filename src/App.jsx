@@ -5,7 +5,6 @@ import FarmerDashboard from "./pages/FarmerDashboard";
 import ConsumerHome from "./pages/ConsumerHome";
 import Checkout from "./pages/Checkout";
 import OrderTracking from "./pages/OrderTracking";
-import FarmersMap from "./pages/FarmersMap";
 
 export default function App() {
   return (
@@ -16,7 +15,6 @@ export default function App() {
       <Route path="/consumer" element={<ConsumerHome />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/track" element={<OrderTracking />} />
-      <Route path="/map" element={<FarmersMap />} />
     </Routes>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  Sprout, Search, MapPin, Star, ShoppingCart, SlidersHorizontal,
-  Bell, User, Menu, X, Plus, Minus
+  Sprout, Search, MapPin, Star, ShoppingCart,
+  Bell, User, X, Plus, Minus
 } from "lucide-react";
 
 const PRODUCTS = [
@@ -16,12 +16,6 @@ const PRODUCTS = [
 
 const CATEGORIES = ["All", "Vegetables", "Fruits", "Grains", "Pulses", "Dairy", "Spices"];
 
-/*
-  ProductImage: shows the real photo, but if it ever fails to load
-  (slow network, bad link, offline during demo), it silently falls
-  back to the green icon tile instead of a broken-image box — safer
-  for a live presentation.
-*/
 function ProductImage({ src, alt, className }) {
   const [failed, setFailed] = useState(false);
   if (failed) {
@@ -104,10 +98,6 @@ function SearchAndFilters({ search, setSearch, category, setCategory }) {
             </button>
           ))}
         </div>
-
-        <Link to="/map" className="inline-block text-white/90 text-xs font-semibold mt-3 underline underline-offset-2">
-          📍 View nearby farmers on map
-        </Link>
       </div>
     </div>
   );
